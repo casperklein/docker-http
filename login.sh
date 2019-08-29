@@ -9,13 +9,21 @@ Require valid-user
 EOF
 )
 
-# check if user/pass is supplied
+# check if $user/$pass is supplied
 echo -ne "HTTP-Auth:\t"
-if [ -n "$user" ] && [ -n "$pass" ]; then
-	# enable auth_digest module and generate .htdigest file
+if [ -n "$user" ] && [ -n "$pass" ] || [ -n "$auth" ]; then
 	echo "enabled"
+
+	# generate user/pass if $auth is supplied
+	if [ -n "$auth" ]; then
+		user=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 10)
+		pass=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 10)
+	fi
+
 	echo -e "Username:\t$user"
 	echo -e "Password:\t$pass"
+
+	# enable auth_digest module and generate .htdigest file
 	a2enmod auth_digest > /dev/null &&
 	echo "$AUTH" >> /etc/apache2/apache2.conf &&
 	DIGEST="$(printf "%s:%s:%s" "$user" "This is a private system. Do not attempt to login unless you are an authorized user." "$pass" | md5sum | awk '{print $1}')" &&
