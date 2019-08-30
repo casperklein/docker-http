@@ -1,5 +1,7 @@
 # docker-http
 
+Quick way to share files with a [Fancy Index Listing](https://github.com/Vestride/fancy-index/) via HTTP.
+
 ## Share files in current directory via HTTP
 
     PORT=8080
