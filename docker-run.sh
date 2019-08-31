@@ -34,4 +34,15 @@ fi
 
 echo '</Directory>' >> /etc/apache2/apache2.conf
 
+# Runnning behind a reverse proxy? Log the correct remote IP address.
+if [ -n "$proxy" ]; then
+	echo 'LogFormat "%t %{X-Forwarded-For}i %u \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" combined' >> /etc/apache2/apache2.conf
+fi
+
 echo
+
+# Start apache2
+apachectl start &&
+
+# Show logs
+tail -F /var/log/apache2/*

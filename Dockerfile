@@ -15,7 +15,7 @@ RUN	echo 'ServerName docker-http' >> /etc/apache2/apache2.conf \
 &&	cat /usr/share/fancy-index-master/.htaccess >> /etc/apache2/apache2.conf
 
 # Add auth handler
-COPY	login.sh /
+COPY	docker-run.sh /
 
 # Final image
 FROM	scratch
@@ -23,6 +23,4 @@ COPY	--from=build / /
 
 EXPOSE  80
 
-CMD     /login.sh \
-&&	apachectl start \
-&&	tail -F /var/log/apache2/*
+CMD     /docker-run.sh

@@ -31,6 +31,11 @@ Quick way to share files with a [Fancy Index Listing](https://github.com/Vestrid
 
     alias httphere='docker run --rm -it -v $(pwd):/var/www/html -p 8080:80 --env auth="random" casperklein/http'
 
+## Behind a reverse proxy (log the correct remote IP address: %{X-Forwarded-For})
+
+    PORT=8080
+    docker run --rm -it -v $(pwd):/var/www/html -p $PORT:80 --env proxy="reverse" casperklein/http
+
 ## Access files
 
     http://$HOST:$PORT/
