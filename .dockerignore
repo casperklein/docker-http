@@ -1,4 +1,2 @@
-.git
-.dockerignore
-Dockerfile
-README.md
+*
+!login.sh
