@@ -2,7 +2,7 @@ FROM    debian:10-slim as build
 
 # Install apache
 RUN     apt-get update \
-&&	apt-get -y install apache2
+&&	apt-get -y install dumb-init apache2
 
 # Add Fancy Index
 ADD	https://github.com/Vestride/fancy-index/archive/master.tar.gz /usr/share/
@@ -24,6 +24,8 @@ COPY	docker-run.sh /
 FROM	scratch
 COPY	--from=build / /
 
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+
 EXPOSE  80
 
-CMD     /docker-run.sh
+CMD	["/docker-run.sh"]
