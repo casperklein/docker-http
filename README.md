@@ -2,39 +2,32 @@
 
 Quick way to share files with a [Fancy Index Listing](https://github.com/Vestride/fancy-index/) via HTTP.
 
+## Parameters
+
+| Parameters | Description |
+| - | - |
+| -p 8080:80 | Map host port 8080 |
+| -e user="foo" | Username for authentication |
+| -e pass="CHANGE-ME" | Password for authentication |
+| -e auth="random" | Generate random user/pass for authentication |
+| -e TZ="Europe/Berlin" | Specify a timezone to use |
+| -v $(pwd):/html | Mount current dirctory for file sharing |
+
 ## Share files in current directory via HTTP
 
-    PORT=8080
-    docker run --rm -it -v $(pwd):/var/www/html -p $PORT:80 casperklein/http
+    docker run --rm -it -v $(pwd):/html -p 8080:80 casperklein/http
 
-### Alias
+### with authentication
+    docker run --rm -it -v $(pwd):/html -p 8080:80 -e user="foo" -e pass="CHANGE-ME" casperklein/http
 
-    alias httphere='docker run --rm -it -v $(pwd):/var/www/html -p 8080:80 casperklein/http'
+### authentication with random credentials
+    docker run --rm -it -v $(pwd):/html -p 8080:80 -e auth="random" casperklein/http
 
-## Share files in current directory via HTTP (with authentication)
+## Aliases
 
-    PORT=8080
-    USER=foo
-    PASS=CHANGE-ME
-    docker run --rm -it -v $(pwd):/var/www/html -p $PORT:80 --env user="$USER" --env pass="$PASS" casperklein/http
-
-### Alias (with authentication)
-    
-    alias httphere='docker run --rm -it -v $(pwd):/var/www/html -p 8080:80 --env user="foo" --env pass="CHANGE-ME" casperklein/http'
-
-## Share files in current directory via HTTP (with random authentication)
-
-    PORT=8080
-    docker run --rm -it -v $(pwd):/var/www/html -p $PORT:80 --env auth="random" casperklein/http
-
-### Alias (with random authentication)
-
-    alias httphere='docker run --rm -it -v $(pwd):/var/www/html -p 8080:80 --env auth="random" casperklein/http'
-
-## Behind a reverse proxy (log the correct remote IP address: %{X-Forwarded-For})
-
-    PORT=8080
-    docker run --rm -it -v $(pwd):/var/www/html -p $PORT:80 --env proxy="reverse" casperklein/http
+    alias httphere='docker run --rm -it -v $(pwd):/html -p 8080:80 casperklein/http'
+    alias httphere='docker run --rm -it -v $(pwd):/html -p 8080:80 -e user="foo" -e pass="CHANGE-ME" casperklein/http'
+    alias httphere='docker run --rm -it -v $(pwd):/html -p 8080:80 -e auth="random" casperklein/http'
 
 ## Access files
 
