@@ -33,4 +33,4 @@ Quick way to share files with a [Fancy Index Listing](https://github.com/Vestrid
 
     http://$HOST:$PORT/
 
-    ![Fancy Directory Listing](/docker-http.png)
+![Fancy Directory Listing](/docker-http.png)
