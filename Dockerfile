@@ -1,6 +1,4 @@
-ARG	FROM=debian:10-slim
-
-FROM    $FROM as build
+FROM    debian:10-slim as build
 
 ENV	PACKAGES="apache2"
 
