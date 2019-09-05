@@ -31,6 +31,6 @@ Quick way to share files with a [Fancy Index Listing](https://github.com/Vestrid
 
 ## Access files
 
-    http://$HOST:$PORT/
+    http://$HOST:8080/
 
 ![Fancy Directory Listing](/docker-http.png)
