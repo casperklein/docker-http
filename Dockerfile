@@ -1,6 +1,6 @@
 FROM    debian:10-slim as build
 
-ENV	PACKAGES="apache2"
+ENV	PACKAGES="apache2 curl"
 
 # Install apache
 RUN     apt-get update \
@@ -29,5 +29,7 @@ COPY	--from=build / /
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
 EXPOSE  80
+
+#HEALTHCHECK --retries=1 CMD curl -f -A 'Docker: Health-Check' localhost || exit 1
 
 CMD	["/run.sh"]
