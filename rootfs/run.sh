@@ -8,6 +8,7 @@ fi
 echo -ne "HTTP-Auth:\t"
 
 # check if $user/$pass is supplied
+# shellcheck disable=SC2154
 if [ -n "$user" ] && [ -n "$pass" ] || [ -n "$auth" ]; then
 	# enable auth
 	sed -i 's;<Directory /html>;<Directory /foo>;' /etc/apache2/conf-available/z-custom-config.conf
