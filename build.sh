@@ -1,13 +1,15 @@
 #!/bin/bash
 
-USER=casperklein
-NAME=http
-TAG=latest
+set -ueo pipefail
 
-[ -n "$USER" ] && TAG=$USER/$NAME:$TAG || TAG=$NAME:$TAG
+USER=$(grep -P 'ENV\s+USER=".+?"' Dockerfile | cut -d'"' -f2)
+NAME=$(grep -P 'ENV\s+NAME=".+?"' Dockerfile | cut -d'"' -f2)
+VERSION=$(grep -P 'ENV\s+VERSION=".+?"' Dockerfile | cut -d'"' -f2)
+TAG="$USER/$NAME:$VERSION"
 
-DIR=$(dirname "$(readlink -f "$0")") &&
-cd "$DIR" &&
-echo "Building: $TAG" &&
-echo &&	
-docker build -t $TAG .
+DIR=${0%/*}
+cd "$DIR"
+
+echo "Building: $NAME $VERSION"
+echo
+docker build -t "$TAG" .

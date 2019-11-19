@@ -1,8 +1,13 @@
 FROM    debian:10-slim as build
 
-ENV	PACKAGES="apache2 curl"
+ENV	USER="casperklein"
+ENV	NAME="http"
+ENV	VERSION="latest"
 
-# Install apache
+ENV	PACKAGES="apache2 curl"
+ENV	PACKAGES_CLEAN="curl"
+
+# Install packages
 RUN     apt-get update \
 &&	apt-get -y --no-install-recommends install $PACKAGES
 
@@ -20,6 +25,10 @@ RUN	tar xzf /usr/share/master.tar.gz -C /usr/share \
 &&	echo '<Directory /html>' >> /etc/apache2/apache2.conf \
 &&	cat /usr/share/fancy-index-master/.htaccess >> /etc/apache2/apache2.conf \
 &&	echo '</Directory>' >> /etc/apache2/apache2.conf
+
+# Cleanup
+RUN     apt-get -y purge $PACKAGES_CLEAN \
+&&      apt -y autoremove
 
 # Build final image
 RUN	apt-get -y install dumb-init \
