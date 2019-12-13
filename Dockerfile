@@ -1,4 +1,4 @@
-FROM    debian:10-slim as build
+FROM	debian:10-slim as build
 
 ENV	USER="casperklein"
 ENV	NAME="http"
@@ -8,7 +8,7 @@ ENV	PACKAGES="apache2 curl"
 ENV	PACKAGES_CLEAN="curl"
 
 # Install packages
-RUN     apt-get update \
+RUN	apt-get update \
 &&	apt-get -y --no-install-recommends install $PACKAGES
 
 # Copy root filesystem
@@ -27,8 +27,8 @@ RUN	tar xzf /usr/share/master.tar.gz -C /usr/share \
 &&	echo '</Directory>' >> /etc/apache2/apache2.conf
 
 # Cleanup
-RUN     apt-get -y purge $PACKAGES_CLEAN \
-&&      apt -y autoremove
+RUN	apt-get -y purge $PACKAGES_CLEAN \
+&&	apt -y autoremove
 
 # Build final image
 RUN	apt-get -y install dumb-init \
@@ -37,7 +37,7 @@ FROM	scratch
 COPY	--from=build / /
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-EXPOSE  80
+EXPOSE	80
 
 #HEALTHCHECK --retries=1 CMD curl -f -A 'Docker: Health-Check' http://127.0.0.1/ || exit 1
 
