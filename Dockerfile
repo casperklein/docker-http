@@ -2,7 +2,7 @@ FROM	debian:10-slim as build
 
 ENV	USER="casperklein"
 ENV	NAME="http"
-ENV	VERSION="latest"
+ENV	VERSION="0.1"
 
 ENV	PACKAGES="apache2 curl"
 ENV	PACKAGES_CLEAN="curl"
