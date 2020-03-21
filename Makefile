@@ -15,3 +15,4 @@ clean:
 
 push:
 	docker push $(USER)/$(NAME):$(VERSION)
+	docker push $(USER)/$(NAME):latest
