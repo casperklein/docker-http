@@ -19,7 +19,7 @@ RUN	a2enconf z-custom-config.conf \
 &&	a2enmod auth_digest
 
 # Add/Configure Fancy Index
-ADD	https://github.com/Vestride/fancy-index/archive/master.tar.gz /usr/share/
+ADD	https://github.com/Vestride/fancy-index/archive/main.tar.gz /usr/share/
 RUN	tar xzf /usr/share/master.tar.gz -C /usr/share \
 &&	echo 'Alias /fancy-index /usr/share/fancy-index-master' >> /etc/apache2/apache2.conf \
 &&	echo '<Directory /html>' >> /etc/apache2/apache2.conf \
