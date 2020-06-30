@@ -1,5 +1,12 @@
 # docker-http
 
+![Version][version-shield]
+![Supports amd64 architecture][amd64-shield]
+![Supports aarch64 architecture][aarch64-shield]
+![Supports armhf architecture][armhf-shield]
+![Supports armv7 architecture][armv7-shield]
+![Docker image size][image-size-shield]
+
 Quick way to share files with a [Fancy Index Listing](https://github.com/Vestride/fancy-index/) via HTTP.
 
 ## Parameters
@@ -34,3 +41,10 @@ Quick way to share files with a [Fancy Index Listing](https://github.com/Vestrid
     http://$HOST:8080/
 
 ![Fancy Directory Listing](/docker-http.png)
+
+[aarch64-shield]: https://img.shields.io/badge/aarch64-yes-blue.svg
+[amd64-shield]: https://img.shields.io/badge/amd64-yes-blue.svg
+[armhf-shield]: https://img.shields.io/badge/armhf-yes-blue.svg
+[armv7-shield]: https://img.shields.io/badge/armv7-yes-blue.svg
+[version-shield]: https://img.shields.io/github/v/release/casperklein/docker-http
+[image-size-shield]: https://img.shields.io/docker/image-size/casperklein/http/latest
