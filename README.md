@@ -25,6 +25,7 @@ Quick way to share files with a [Fancy Index Listing](https://github.com/Vestrid
     docker run --rm -it -v $PWD:/html -p 8080:80 casperklein/http
 
 ### with authentication
+
     docker run --rm -it -v $PWD:/html -p 8080:80 -e user="foo" -e pass="CHANGE-ME" casperklein/http
 
 ### authentication with random credentials
