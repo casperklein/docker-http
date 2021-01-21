@@ -1,18 +1,28 @@
 # all targets are phony (no files to check)
-.PHONY: default build clean push
+.PHONY: default build clean install uninstall push
 
-USER := $(shell grep -P 'ENV\s+USER=".+?"' Dockerfile | cut -d'"' -f2)
-NAME := $(shell grep -P 'ENV\s+NAME=".+?"' Dockerfile | cut -d'"' -f2)
-VERSION := $(shell grep -P 'ENV\s+VERSION=".+?"' Dockerfile | cut -d'"' -f2)
+SHELL = /bin/bash
+
+IMAGE := $(shell jq -er '.image' < config.json)
+TAG := $(shell jq -er '"\(.image):\(.version)"' < config.json)
 
 default: build
 
 build:
-	./build.sh
+	@./build.sh
 
 clean:
-	docker rmi $(USER)/$(NAME):$(VERSION)
+	@echo "Removing Docker images.."
+	docker rmi "$(TAG)"; \
+	docker rmi "$(IMAGE):latest"
+
+install:
+	@echo "Installing.."
+
+uninstall:
+	@echo "Uninstalling.."
 
 push:
-	docker push $(USER)/$(NAME):$(VERSION)
-	docker push $(USER)/$(NAME):latest
+	@echo "Pushing image to Docker Hub.."
+	docker push "$(TAG)"
+	docker push "$(IMAGE):latest"
