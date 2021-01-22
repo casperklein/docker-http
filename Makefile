@@ -1,5 +1,5 @@
 # all targets are phony (no files to check)
-.PHONY: default build clean install uninstall push
+.PHONY: default build clean push
 
 SHELL = /bin/bash
 
@@ -15,12 +15,6 @@ clean:
 	@echo "Removing Docker images.."
 	docker rmi "$(TAG)"; \
 	docker rmi "$(IMAGE):latest"
-
-install:
-	@echo "Installing.."
-
-uninstall:
-	@echo "Uninstalling.."
 
 push:
 	@echo "Pushing image to Docker Hub.."
