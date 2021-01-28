@@ -27,7 +27,7 @@ RUN	tar xzf /usr/share/main.tar.gz -C /usr/share \
 
 # Cleanup
 RUN	apt-get -y purge $PACKAGES_CLEAN \
-&&	apt -y autoremove
+&&	apt-get -y autoremove
 
 # Build final image
 FROM	scratch
