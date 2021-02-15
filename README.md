@@ -41,8 +41,9 @@ Quick way to share files with a [Fancy Index Listing](https://github.com/Vestrid
 
     http://$HOST:8080/
 
-![Fancy Directory Listing](/docker-http.png)
+![Fancy Directory Listing][screenshot]
 
+[screenshot]: https://github.com/casperklein/docker-http/raw/master/docker-http.png
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-blue.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-blue.svg
 [armhf-shield]: https://img.shields.io/badge/armhf-yes-blue.svg
