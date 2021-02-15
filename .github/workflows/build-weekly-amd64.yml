@@ -2,7 +2,7 @@ name: "Build & Publish"
 
 on:
   schedule:
-    - cron: "0 21 * * *"
+    - cron: "15 0 * * *"
 
 jobs:
   build-and-publish:
