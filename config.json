@@ -2,5 +2,5 @@
   "user": "casperklein",
   "name": "http",
   "image": "casperklein/http",
-  "version": "0.1"
+  "version": "0.1.1"
 }
