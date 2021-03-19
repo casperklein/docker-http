@@ -19,10 +19,9 @@ jobs:
           VERSION=$(jq -er '.version' < config.json)
           TAG=$(jq -er '"\(.image):\(.version)"' < config.json)
 
-          echo "IMAGE=$IMAGE" >> $GITHUB_ENV    # ${{ env.IMAGE }}
-          echo "VERSION=$VERSION" >> GITHUB_ENV # ${{ env.VERSION }}
-          echo "TAG=$TAG" >> $GITHUB_ENV        # ${{ env.TAG }}
-          echo "VERSION=$VERSION"
+          echo "IMAGE=$IMAGE" >> $GITHUB_ENV      # ${{ env.IMAGE }}
+          echo "VERSION=$VERSION" >> $GITHUB_ENV  # ${{ env.VERSION }}
+          echo "TAG=$TAG" >> $GITHUB_ENV          # ${{ env.TAG }}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
