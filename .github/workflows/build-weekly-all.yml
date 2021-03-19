@@ -53,7 +53,8 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
-          build-args: VERSION=${{ env.VERSION }}
+          build-args: |
+                  VERSION=${{ env.VERSION }}
           tags: |
             ${{ env.TAG }}
             ${{ env.IMAGE }}:latest
