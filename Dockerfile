@@ -32,6 +32,9 @@ RUN	apt-get -y purge $PACKAGES_CLEAN \
 # Build final image
 FROM	scratch
 
+ARG	VERSION
+ENV	Version=$VERSION
+
 EXPOSE	80
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
