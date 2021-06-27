@@ -1,0 +1,18 @@
+version: '2.4'
+services:
+    http:
+#        build: .
+        image: casperklein/http
+        volumes:
+            - '$PWD:/html'          
+        ports:
+            - '8080:80'
+#        environment:
+# Specific pass:
+#            - user=foo
+#            - pass=CHANGE-ME
+# Random pass:
+#            - auth=random
+        mem_limit: 256m
+        mem_reservation: 128M
+        cpus: 0.4
