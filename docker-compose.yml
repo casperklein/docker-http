@@ -1,0 +1,19 @@
+version: '3'
+services:
+  http:
+    image: docker.io/casperklein/http:latest
+    container_name: http
+    init: false
+    volumes:
+      - ./:/html
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - TZ="Europe/Berlin"
+      #- user="foo"
+      #- pass="insecure"
+      - auth=random
+    ports:
+      - "8080:80"
+    restart: always
+    healthcheck:
+      test: "bash -c '</dev/tcp/localhost/80' || exit 1"
