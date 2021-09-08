@@ -4,7 +4,7 @@
 
 - Debian 11 base image
 - [`docker-compose.yml`](https://github.com/casperklein/docker-http/blob/debian-11/docker-compose.yml) sample added
-- [`CHANGELOG.md`](https://github.com/casperklein/docker-http/blob/debian-11/CHANGELOG.md) added
+- `CHANGELOG.md` added
 
 ## 0.2.0
 
