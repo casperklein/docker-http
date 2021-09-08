@@ -66,6 +66,6 @@ jobs:
             VERSION=${{ env.VERSION }}
           tags: |
             ${{ env.TAG }}
-#            ${{ env.IMAGE }}:latest
+            ${{ env.IMAGE }}:latest
 #          cache-from: type=local,src=/tmp/.buildx-cache
 #          cache-to: type=local,dest=/tmp/.buildx-cache
