@@ -1,7 +1,6 @@
-FROM	debian:10-slim as build
+FROM	debian:11-slim as build
 
-ENV	PACKAGES="apache2 curl dumb-init"
-ENV	PACKAGES_CLEAN="curl"
+ENV	PACKAGES="apache2 dumb-init"
 
 # Install packages
 ENV	DEBIAN_FRONTEND=noninteractive
@@ -24,10 +23,6 @@ RUN	tar xzf /usr/share/main.tar.gz -C /usr/share \
 &&	echo '<Directory /html>' >> /etc/apache2/apache2.conf \
 &&	cat /usr/share/fancy-index-main/.htaccess >> /etc/apache2/apache2.conf \
 &&	echo '</Directory>' >> /etc/apache2/apache2.conf
-
-# Cleanup
-RUN	apt-get -y purge $PACKAGES_CLEAN \
-&&	apt-get -y autoremove
 
 # Build final image
 FROM	scratch
