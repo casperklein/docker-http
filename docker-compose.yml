@@ -5,7 +5,10 @@ services:
     container_name: http
     init: false
     volumes:
+      # share current directory
       - ./:/html
+      # share custom directory /home/foo/web
+      #- /home/foo/web:/html  
       - /etc/localtime:/etc/localtime:ro
     environment:
       - TZ="Europe/Berlin"
