@@ -4,7 +4,7 @@
 
 - Debian 11 base image
 - `docker-compose.yml` sample added
-- CHANGELOG.md added
+- `CHANGELOG.md` added
 
 ## 0.2.0
 
