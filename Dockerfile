@@ -1,9 +1,9 @@
 FROM	debian:11-slim as build
 
-ENV	PACKAGES="apache2 dumb-init"
+ARG	PACKAGES="apache2 dumb-init"
 
 # Install packages
-ENV	DEBIAN_FRONTEND=noninteractive
+ARG	DEBIAN_FRONTEND=noninteractive
 RUN	apt-get update \
 &&	apt-get -y upgrade \
 &&	apt-get -y --no-install-recommends install $PACKAGES \
@@ -27,8 +27,12 @@ RUN	tar xzf /usr/share/main.tar.gz -C /usr/share \
 # Build final image
 FROM	scratch
 
-ARG	VERSION
-ENV	Version=$VERSION
+ARG	VERSION="unknown"
+
+LABEL	org.opencontainers.image.description="Quick way to share files with a Fancy-Index-Listing via HTTP"
+LABEL	org.opencontainers.image.source="https://github.com/casperklein/docker-http/"
+LABEL	org.opencontainers.image.title="docker-http"
+LABEL	org.opencontainers.image.version="$VERSION"
 
 EXPOSE	80
 
