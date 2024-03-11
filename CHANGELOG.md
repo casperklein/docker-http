@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.0
+
+- Debian 12 base image
+
 ## 0.3.0
 
 - Debian 11 base image
