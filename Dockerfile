@@ -1,4 +1,4 @@
-FROM	debian:11-slim as build
+FROM	debian:12-slim as build
 
 ARG	PACKAGES="apache2 dumb-init"
 
